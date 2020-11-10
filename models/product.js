@@ -33,6 +33,7 @@ module.exports = class Product {
   // Save products
   save() {
     getProductsFromFile((products) => {
+      // Update product
       if (this.id) {
         const existingProductIndex = products.findIndex(
           (prod) => prod.id === this.id
@@ -42,7 +43,7 @@ module.exports = class Product {
         fs.writeFile(p, JSON.stringify(updatedProducts), (err) =>
           console.log(err)
         );
-      } else {
+      } else { // Save new product
         this.id = Math.random().toString();
         products.push(this);
         fs.writeFile(p, JSON.stringify(products), (err) => console.log(err));
@@ -71,7 +72,7 @@ module.exports = class Product {
   // Get product
   static findById(id, cb) {
     getProductsFromFile((products) => {
-      const product = products.find((p) => p.id === id);
+      const product = products.find((prod) => prod.id === id);
       cb(product);
     });
   }

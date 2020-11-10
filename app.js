@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const { get404 } = require("./controllers/error");
+const { db } = require("./util/db");
 const app = express();
 
 app.set("view engine", "ejs");

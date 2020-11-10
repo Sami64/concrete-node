@@ -8,6 +8,7 @@ exports.getAddProduct = (req, res) => {
   });
 };
 
+
 exports.getEditProduct = (req, res) => {
   const editMode = req.query.edit;
   if (!editMode) {
@@ -27,6 +28,7 @@ exports.getEditProduct = (req, res) => {
   });
 };
 
+
 exports.postEditProduct = (req, res) => {
   const productId = req.body.productId;
   const updatedTitle = req.body.title;
@@ -44,6 +46,7 @@ exports.postEditProduct = (req, res) => {
   res.redirect("/admin/products");
 };
 
+
 exports.postAddProduct = (req, res) => {
   const title = req.body.title;
   const imageUrl = req.body.imageUrl;
@@ -54,6 +57,7 @@ exports.postAddProduct = (req, res) => {
   res.redirect("/");
 };
 
+
 exports.getAdminProducts = (req, res) => {
   Product.fetchAll((products) => {
     res.render("admin/products", {
@@ -63,6 +67,7 @@ exports.getAdminProducts = (req, res) => {
     });
   });
 };
+
 
 exports.postDeleteProduct = (req, res) => {
   const productId = req.body.productId;
